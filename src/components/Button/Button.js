@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import themes from '@lib/theme.js';
+import themes from './Button.theme.js';
 import { StyledButton } from './Button.styled';
 
 const Button = ({ children, className, onClick, disabled, theme = 'primary' }) => {
@@ -10,7 +10,7 @@ const Button = ({ children, className, onClick, disabled, theme = 'primary' }) =
   };
 
   return (
-    <ThemeProvider theme={themes.button[theme]}>
+    <ThemeProvider theme={themes[theme]}>
       <StyledButton className={className} onClick={handleClick} disabled={disabled}>
         {children}
       </StyledButton>

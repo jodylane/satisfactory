@@ -1,12 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@components/globalstyles';
-
-const theme = {
-  colors: {
-    primary: '#111',
-    secondary: '#0070f3',
-  },
-};
+import theme from '@lib/theme';
 
 export default function App({ Component, pageProps }) {
   return (
