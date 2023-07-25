@@ -5,7 +5,7 @@ import GlobalStyles from '@components/globalstyles';
 
 const preview = {
   parameters: {
-    layout: 'center',
+    layout: 'centered',
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

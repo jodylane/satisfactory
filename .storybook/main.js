@@ -11,6 +11,8 @@ const config = {
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
+    '@storybook/addon-controls',
+    '@storybook/addon-docs',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -37,7 +39,7 @@ const config = {
     return config;
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
   },
 };
 export default config;

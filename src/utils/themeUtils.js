@@ -24,15 +24,51 @@ export const buildContrastMap = (colors) => {
     }, {});
 };
 
+const shorthandToLonghand = (color) => {
+  console.log(color);
+
+  // Check if the color is a shorthand hex color (3 or 4 digits)
+  const shorthandRegex = /^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])?$/;
+  const shorthandWithAlphaRegex = /^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])?$/;
+
+  if (shorthandRegex.test(color) || shorthandWithAlphaRegex.test(color)) {
+    // Extract the individual components
+    const [, r, g, b, a] = color.match(shorthandWithAlphaRegex);
+
+    // Return the longhand form
+    if (a) {
+      return `#${r}${r}${g}${g}${b}${b}${a}${a}`;
+    } else {
+      return `#${r}${r}${g}${g}${b}${b}`;
+    }
+  }
+
+  // Return the input color if it's already in longhand form
+  return color;
+};
+
 /**
  * take a group of original colors & returns light & dark versions of them alongside our original colors
  */
 
-export const buildColors = (colors) => {
+export const buildColorMap = (colors) => {
   const newColors = { ...colors };
   for (const [key, value] of Object.entries(newColors)) {
-    newColors[`${key}Light`] = lighten(0.35, value);
-    newColors[`${key}Dark`] = darken(0.2, value);
+    for (const index of [...new Array(8)].keys()) {
+      const newIndex = (index + 1) * 100;
+      let color;
+      if (index < 4) {
+        color = lighten(0.1 * (index + 1), value);
+      } else {
+        color = darken(0.1 * (index - 3), value);
+      }
+      console.log(color);
+      color = shorthandToLonghand(color);
+
+      if (!Object.values(newColors).includes(color)) {
+        newColors[`${key}${newIndex}`] = color;
+      }
+    }
   }
 
   return newColors;
