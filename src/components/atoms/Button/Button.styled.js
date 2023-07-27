@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
   color: ${(props) => (props.outline ? props.theme.outline.color : props.theme.color)};
   cursor: pointer;
   padding: 8px 15px;
+  width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
 
   &:hover,
   &:active {
@@ -23,15 +24,18 @@ export const StyledButton = styled.button`
 
   &:disabled {
     background-color: ${(props) =>
-      props.outline ? props.theme.colors.white.value : props.theme.disabled.backgroundColor};
-    border-color: ${(props) => props.theme.disabled.borderColor};
+      props.outline
+        ? props.theme.disabled.outline.backgroundColor
+        : props.theme.disabled.backgroundColor};
+    border-color: ${(props) =>
+      props.outline ? props.theme.disabled.outline.borderColor : props.theme.disabled.borderColor};
     color: ${(props) =>
-      props.outline ? props.theme.disabled.backgroundColor : props.theme.disabled.color};
+      props.outline ? props.theme.disabled.outline.color : props.theme.disabled.color};
     cursor: not-allowed;
 
     * {
       fill: ${(props) =>
-        props.outline ? props.theme.disabled.backgroundColor : props.theme.disabled.color};
+        props.outline ? props.theme.disabled.outline.color : props.theme.disabled.color};
     }
   }
 `;

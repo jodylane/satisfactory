@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useForm from '@lib/hooks/useForm';
-import Input from '@components/Input';
-import Button from '@components/Button';
+import Input from '@atoms/Input';
+import Button from '@atoms/Button';
 import { Form, Container } from './FindPercentage.styled';
 
 const FindPercentage = () => {

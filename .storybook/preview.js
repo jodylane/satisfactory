@@ -1,7 +1,7 @@
 /** @type { import('@storybook/react').Preview } */
 import { ThemeProvider } from 'styled-components';
 import theme from '@lib/theme';
-import GlobalStyles from '@components/globalstyles';
+import { GlobalStyles, StorybookContainer } from '@components/globalstyles';
 
 const preview = {
   parameters: {
@@ -25,7 +25,7 @@ const preview = {
     (Story) => (
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        {Story()}
+        <StorybookContainer>{Story()}</StorybookContainer>
       </ThemeProvider>
     ),
   ],

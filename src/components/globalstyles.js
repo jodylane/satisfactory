@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   html,
   body {
     color: ${({ theme }) => theme.colors.primary};
@@ -20,4 +20,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+export const StorybookContainer = styled.div`
+  min-width: 30vw;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

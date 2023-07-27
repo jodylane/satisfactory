@@ -1,11 +1,11 @@
 import FindPercentage from '@screens/FindPercentage';
-import ColorSwatch from '@components/ColorSwatch';
+import ListSwatches from '@molecules/ListSwatches';
 
 export default function Home() {
   return (
     <div>
       <FindPercentage />
-      <ColorSwatch />
+      <ListSwatches />
     </div>
   );
 }

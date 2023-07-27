@@ -28,6 +28,8 @@ const config = {
       },
       alias: {
         path: require.resolve('path-browserify'),
+        '@atoms': path.resolve(__dirname, '../src/components/atoms'),
+        '@molecules': path.resolve(__dirname, '../src/components/molecules'),
         '@components': path.resolve(__dirname, '../src/components'),
         '@layouts': path.resolve(__dirname, '../src/layouts'),
         '@lib': path.resolve(__dirname, '../src/lib'),

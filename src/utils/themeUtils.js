@@ -7,6 +7,8 @@ import { lighten, darken, getContrast } from 'polished';
 export const buildContrastMap = (colors) => {
   return Object.entries(colors)
     .map(([key, value]) => {
+      if (key === 'transparent')
+        return { key, value, contrastColor: colors.black, contrasColorsScore: 100 };
       const darkFont = getContrast(value, colors.black);
       const lightFont = getContrast(value, colors.white);
 
@@ -19,6 +21,7 @@ export const buildContrastMap = (colors) => {
         value,
       };
     })
+    .filter((color) => color)
     .reduce((accumulator, { key, contrastColor, value }) => {
       return { ...accumulator, [key]: { contrastColor, value } };
     }, {});
@@ -70,6 +73,9 @@ export const buildColorMap = (colors) => {
       }
     }
   }
+
+  newColors['transparent'] = 'transparent';
+  console.log(newColors);
 
   return newColors;
 };
