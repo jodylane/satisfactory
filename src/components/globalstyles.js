@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    
   }
 
   a {
@@ -17,6 +18,16 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    font-size: 16px;
+
+    @media (max-width: ${(props) => props.theme.deviceSize.md}) { 
+      font-size: 18px;
+    }
+
+    @media (max-width: ${(props) => props.theme.deviceSize.sm}) { 
+      font-size: 20px;
+    }
+    
   }
 `;
 

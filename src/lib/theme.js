@@ -14,7 +14,15 @@ const colors = buildColorMap(baseColors);
 
 const contrastMap = buildContrastMap(colors);
 
+const deviceSize = {
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
+};
+
 export default {
   baseColors,
   colors: contrastMap,
+  deviceSize,
 };

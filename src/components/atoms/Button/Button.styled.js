@@ -8,7 +8,8 @@ export const StyledButton = styled.button`
     ${(props) => (props.outline ? props.theme.outline.borderColor : props.theme.borderColor)};
   color: ${(props) => (props.outline ? props.theme.outline.color : props.theme.color)};
   cursor: pointer;
-  padding: 8px 15px;
+  font-size: 0.9em;
+  padding: 0.5em 0.9375em;
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
 
   &:hover,
