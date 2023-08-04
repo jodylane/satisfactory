@@ -75,16 +75,12 @@ export const buildColorMap = (colors) => {
   }
 
   newColors['transparent'] = 'transparent';
-  console.log(newColors);
 
   return newColors;
 };
 
 /**
- * groups all contrasted colors by original color values
- * orders colors in light, original, dark format
- * filters out null values
- * returns array of properly sorted colors swatches for displaying later
+ * returns array of sorted colors by like key name in ascending order
  */
 export const buildSwatches = (baseColors, contrastColors) => {
   const newColors = {};
