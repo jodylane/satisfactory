@@ -8,6 +8,8 @@ export const StyledAlert = styled.div`
     ${(props) => (props.outline ? props.theme.outline.borderColor : props.theme.borderColor)};
   color: ${(props) => (props.outline ? props.theme.outline.color : props.theme.color)};
   font-size: 0.9em;
-  padding: 0.5em 0.9375em;
+  font-weight: bold;
+  padding: 1em 1.875em;
+  position: relative;
   width: 100%;
 `;

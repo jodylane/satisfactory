@@ -8,9 +8,6 @@ export default {
     children: {
       control: 'text',
     },
-    outline: {
-      control: 'boolean',
-    },
     theme: {
       options: Object.keys(theme),
       control: { type: 'select' }, // Automatically inferred when 'options' is defined
@@ -19,8 +16,8 @@ export default {
 };
 
 const staticProps = {
-  children: 'My Alert',
-  outline: false,
+  children:
+    'This is my super awesome & super legitimate alert for alerting folks with. Some people could be jealous of such fine alerts.',
   theme: 'warning',
 };
 
@@ -28,11 +25,3 @@ const Template = (args) => <Alert {...args} />;
 
 export const Default = Template.bind({});
 Default.args = { ...staticProps };
-
-export const Outline = Template.bind({});
-Outline.args = { ...staticProps, outline: true };
-Outline.story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};

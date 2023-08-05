@@ -2,63 +2,33 @@ import theme from '@lib/theme';
 
 export default {
   primary: {
-    borderColor: theme.colors.blue.value,
-    color: theme.colors.blue.contrastColor,
-    backgroundColor: theme.colors.blue.value,
-    outline: {
-      borderColor: theme.colors.blue200.value,
-      color: theme.colors.blue200.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
+    borderColor: theme.colors.blue500.value,
+    color: theme.colors.blue500.value,
+    backgroundColor: theme.colors.blue400.value,
   },
   secondary: {
     borderColor: theme.colors.white.value,
     color: theme.colors.white.contrastColor,
     backgroundColor: theme.colors.white.value,
-    outline: {
-      borderColor: theme.colors.white.value,
-      color: theme.colors.white.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
   },
   warning: {
-    borderColor: theme.colors.yellow.value,
-    color: theme.colors.yellow.contrastColor,
-    backgroundColor: theme.colors.yellow.value,
-    outline: {
-      borderColor: theme.colors.yellow.value,
-      color: theme.colors.yellow.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
+    borderColor: theme.colors.yellow700.value,
+    color: theme.colors.yellow700.value,
+    backgroundColor: theme.colors.yellow400.value,
   },
   info: {
-    borderColor: theme.colors.cyan.value,
-    color: theme.colors.cyan.contrastColor,
-    backgroundColor: theme.colors.cyan.value,
-    outline: {
-      borderColor: theme.colors.cyan.value,
-      color: theme.colors.cyan.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
+    borderColor: theme.colors.cyan800.value,
+    color: theme.colors.cyan800.value,
+    backgroundColor: theme.colors.cyan200.value,
   },
   success: {
-    borderColor: theme.colors.green.value,
-    color: theme.colors.green.contrastColor,
-    backgroundColor: theme.colors.green.value,
-    outline: {
-      borderColor: theme.colors.green.value,
-      color: theme.colors.green.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
+    borderColor: theme.colors.green500.value,
+    color: theme.colors.green500.value,
+    backgroundColor: theme.colors.green400.value,
   },
   danger: {
-    borderColor: theme.colors.red.value,
-    color: theme.colors.red.contrastColor,
-    backgroundColor: theme.colors.red.value,
-    outline: {
-      borderColor: theme.colors.red.value,
-      color: theme.colors.red.value,
-      backgroundColor: theme.colors.transparent.value,
-    },
+    borderColor: theme.colors.red600.value,
+    color: theme.colors.red600.value,
+    backgroundColor: theme.colors.red400.value,
   },
 };
