@@ -28,8 +28,6 @@ export const buildContrastMap = (colors) => {
 };
 
 const shorthandToLonghand = (color) => {
-  console.log(color);
-
   // Check if the color is a shorthand hex color (3 or 4 digits)
   const shorthandRegex = /^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])?$/;
   const shorthandWithAlphaRegex = /^#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])?$/;
