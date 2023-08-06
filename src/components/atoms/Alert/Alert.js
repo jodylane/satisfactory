@@ -11,7 +11,10 @@ const Alert = ({ children, onClick, theme = 'primary', outline }) => {
 
   return (
     <ThemeProvider theme={themes[theme]}>
-      <StyledAlert outline={outline}>{children}</StyledAlert>
+      <StyledAlert outline={outline}>
+        {/* <Close/> */}
+        {children}
+      </StyledAlert>
     </ThemeProvider>
   );
 };

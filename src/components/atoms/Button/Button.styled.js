@@ -1,42 +1,72 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const OutlineStyles = (theme) => css`
+  background-color: ${theme.outline.backgroundColor};
+  border-color: ${theme.outline.borderColor};
+  color: ${theme.outline.color};
+
+  &:disabled {
+    background-color: ${theme.disabled.outline.backgroundColor};
+    border-color: ${theme.disabled.outline.borderColor};
+    color: ${theme.disabled.outline.color};
+
+    * {
+      fill: ${theme.disabled.outline.color};
+    }
+  }
+`;
+
+const StandardStyles = (theme) => css`
+  background-color: ${theme.backgroundColor};
+  border-color: ${theme.borderColor};
+  color: ${theme.color};
+
+  &:disabled {
+    background-color: ${theme.disabled.backgroundColor};
+    border-color: ${theme.disabled.borderColor};
+    color: ${theme.disabled.color};
+
+    * {
+      fill: ${theme.disabled.color};
+    }
+  }
+`;
+
+const ActiveHoverStyles = (theme) => css`
+  background-color: ${theme.active.backgroundColor};
+  border-color: ${theme.active.borderColor};
+  color: ${theme.active.color};
+
+  * {
+    fill: ${theme.active.color};
+  }
+`;
 
 export const StyledButton = styled.button`
-  background-color: ${(props) =>
-    props.outline ? props.theme.outline.backgroundColor : props.theme.backgroundColor};
   border-radius: 5px;
-  border: 1px solid
-    ${(props) => (props.outline ? props.theme.outline.borderColor : props.theme.borderColor)};
-  color: ${(props) => (props.outline ? props.theme.outline.color : props.theme.color)};
+  border-style: solid;
+  border-width: 1px;
   cursor: pointer;
   font-size: 0.9em;
   padding: 0.5em 0.9375em;
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
 
+  ${({ outline, theme }) => {
+    if (outline) {
+      return OutlineStyles(theme);
+    }
+
+    return StandardStyles(theme);
+  }}
+
   &:hover,
   &:active {
-    background-color: ${(props) => props.theme.active.backgroundColor};
-    border-color: ${(props) => props.theme.active.borderColor};
-    color: ${(props) => props.theme.active.color};
-
-    * {
-      fill: ${(props) => props.theme.active.color};
-    }
+    ${({ theme }) => {
+      return ActiveHoverStyles(theme);
+    }}
   }
 
   &:disabled {
-    background-color: ${(props) =>
-      props.outline
-        ? props.theme.disabled.outline.backgroundColor
-        : props.theme.disabled.backgroundColor};
-    border-color: ${(props) =>
-      props.outline ? props.theme.disabled.outline.borderColor : props.theme.disabled.borderColor};
-    color: ${(props) =>
-      props.outline ? props.theme.disabled.outline.color : props.theme.disabled.color};
     cursor: not-allowed;
-
-    * {
-      fill: ${(props) =>
-        props.outline ? props.theme.disabled.outline.color : props.theme.disabled.color};
-    }
   }
 `;
