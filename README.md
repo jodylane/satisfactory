@@ -23,3 +23,10 @@ to spin up local storybook server
 ```bash
 yarn storybook
 ```
+## Storybook ERR_REQUIRE_ESM
+if you are encountering this error run
+```bash
+yarn upgrade storybook
+```
+not sure whats going on yet but that resolves the issue for now.
+<img width="1728" alt="Screen Shot 2023-08-05 at 8 28 44 PM" src="https://github.com/jodylane/satisfactory/assets/19368093/b47d15c3-6f53-4fef-ba5c-ba2138cd37d1">
