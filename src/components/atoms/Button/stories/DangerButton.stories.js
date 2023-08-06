@@ -1,5 +1,6 @@
 import Button from '../index';
 import theme from '../Button.theme';
+import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
   title: 'Components/Button/Danger',
@@ -17,6 +18,10 @@ export default {
     theme: {
       options: Object.keys(theme),
       control: { type: 'select' }, // Automatically inferred when 'options' is defined
+      description: dynamicValueDescription(
+        'Determines the visual output of the component.',
+        Object.keys(theme)
+      ),
     },
   },
 };

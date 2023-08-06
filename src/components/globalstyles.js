@@ -29,6 +29,29 @@ export const GlobalStyles = createGlobalStyle`
     }
     
   }
+
+  // handles formatting of dynamic prop values to match storybook styles
+  #storybook-docs {
+    .custom-code-container {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 4px;
+      min-width: 100px;
+
+      .custom-code {
+        background-color: #F7FAFC;
+        border-radius: 3px;
+        border: 1px solid #ECF4F9;
+        color: #2e3438e6;
+        font-family: ui-monospace,Menlo,Monaco,"Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Droid Sans Mono","Courier New",monospace;
+        font-size: 12px;
+        margin: 0 4px 4px 0;
+        padding: 0 3px;
+      }
+    }
+  }
 `;
 
 export const StorybookContainer = styled.div`

@@ -1,5 +1,6 @@
 import Alert from '../index';
 import theme from '../Alert.theme';
+import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
   title: 'Components/Alert/Success',
@@ -11,6 +12,10 @@ export default {
     theme: {
       options: Object.keys(theme),
       control: { type: 'select' }, // Automatically inferred when 'options' is defined
+      description: dynamicValueDescription(
+        'Determines the visual output of the component.',
+        Object.keys(theme)
+      ),
     },
   },
 };

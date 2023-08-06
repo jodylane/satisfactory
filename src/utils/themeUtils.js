@@ -63,7 +63,7 @@ export const buildColorMap = (colors) => {
       } else {
         color = darken(0.1 * (index - 3), value);
       }
-      console.log(color);
+
       color = shorthandToLonghand(color);
 
       if (!Object.values(newColors).includes(color)) {
