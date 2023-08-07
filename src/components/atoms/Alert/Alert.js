@@ -8,8 +8,6 @@ import { useProgress } from '@lib/hooks/useProgress.js';
 const Alert = ({ children, onClick, theme = 'primary', duration = 5, expire = true }) => {
   const [visible, setVisible] = useState(true);
 
-  console.log(themes);
-
   const handleClick = (event) => {
     if (onClick) {
       onClick(event);
