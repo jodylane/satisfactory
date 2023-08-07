@@ -21,8 +21,17 @@ export const StyledAlert = styled.div`
 `;
 
 export const Icon = styled(CloseIcon)`
-  right: 0px;
-  position: absolute;
-  top: 0px;
   cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+`;
+
+export const ProgressBar = styled.div`
+  background-color: ${({ theme }) => theme.borderColor};
+  bottom: 0;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  width: ${({ percent }) => percent}%;
 `;

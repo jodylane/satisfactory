@@ -32,3 +32,6 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = { ...staticProps };
+
+export const WithoutTimeout = Template.bind({});
+WithoutTimeout.args = { ...staticProps, expire: false };
