@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
-import themes from './Button.theme.js';
+import themes from './themes';
 import { StyledButton } from './Button.styled';
 
 const Button = ({ children, id, onClick, disabled, theme = 'primary', outline, fullWidth }) => {
