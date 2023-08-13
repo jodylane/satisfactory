@@ -1,83 +1,95 @@
-import Button from '../index';
-import theme from '../Button.theme';
-import { dynamicValueDescription } from '@utils/storybookUtils';
+import styled from 'styled-components';
+import Icon from './index';
+import Icons from './options';
+// import { dynamicValueDescription } from '@utils/storybookUtils';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+`;
+
+const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+const Category = styled.p`
+  border-bottom: 1px solid black;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+`;
+
+const IconContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  width: 200px;
+`;
+
+const Name = styled.div`
+  margin-top: 10px;
+`;
 
 export default {
-  title: 'Components/Button/Danger',
-  component: Button,
+  title: 'Components/Icon',
+  component: Icon,
   argTypes: {
-    children: {
+    name: {
       control: 'text',
     },
-    disabled: {
-      control: 'boolean',
-    },
-    outline: {
-      control: 'boolean',
-    },
-    theme: {
-      options: Object.keys(theme),
-      control: { type: 'select' }, // Automatically inferred when 'options' is defined
-      description: dynamicValueDescription(
-        'Determines the visual output of the component.',
-        Object.keys(theme)
-      ),
+    title: {
+      control: 'text',
     },
   },
 };
+
+const categories = Object.entries(Icons);
 
 const staticProps = {
   onClick: () => {
     alert('hey, nice click bro!');
   },
-  children: 'My Button',
-  disabled: false,
-  outline: false,
-  theme: 'danger',
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Icon {...args} />;
+
+const AllIconTemplate = (args) => {
+  return (
+    <Container>
+      {categories.map(([category, object], index) => {
+        const icons = Object.keys(object);
+
+        return (
+          <CategoryContainer key={`${category}${index}`}>
+            <Category>{category}</Category>
+            <Grid>
+              {icons.map((icon, idx) => {
+                return (
+                  <IconContainer key={`${category}${index}${icon}${idx}`}>
+                    <Icon {...args} name={icon} category={category} />
+                    <Name>{icon}</Name>
+                  </IconContainer>
+                );
+              })}
+            </Grid>
+          </CategoryContainer>
+        );
+      })}
+    </Container>
+  );
+};
 
 export const Default = Template.bind({});
-Default.args = { ...staticProps };
+Default.args = { ...staticProps, name: 'Close', category: 'Interface' };
 
-export const Disabled = Template.bind({});
-Disabled.args = { ...staticProps, disabled: true };
-
-export const FullWidth = Template.bind({});
-FullWidth.args = { ...staticProps, fullWidth: true };
-
-export const FullWidthDisabled = Template.bind({});
-FullWidthDisabled.args = { ...staticProps, fullWidth: true, disabled: true };
-
-export const Outline = Template.bind({});
-Outline.args = { ...staticProps, outline: true };
-Outline.story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
-
-export const FullWidthOutline = Template.bind({});
-FullWidthOutline.args = { ...staticProps, fullWidth: true, outline: true };
-FullWidthOutline.story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
-
-export const DisabledOutline = Template.bind({});
-DisabledOutline.args = { ...staticProps, disabled: true, outline: true };
-DisabledOutline.story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
-
-export const FullwidthDisabledOutline = Template.bind({});
-FullwidthDisabledOutline.args = { ...staticProps, disabled: true, outline: true, fullWidth: true };
-FullwidthDisabledOutline.story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
+export const AllIcons = AllIconTemplate.bind({});
+AllIcons.args = { ...staticProps };

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import IconOptions from './Icon.options';
+import IconOptions from './options';
 
-const Icon = ({ className, onClick, title, name, size = '1.5em' }) => {
-  const Component = IconOptions[name];
+const Icon = ({ className, onClick, title, category, name, size = '1.5em' }) => {
+  const Component = IconOptions[category][name];
   const accessibilityTitle = title ? title : `${name} Icon`;
   return (
     <Component className={className} onClick={onClick} title={accessibilityTitle} size={size} />
