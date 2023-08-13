@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/maintainability)](https://codeclimate.com/github/jodylane/satisfactory/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/test_coverage)](https://codeclimate.com/github/jodylane/satisfactory/test_coverage)
+
 ## How to use
 
 switch to correct version of node
