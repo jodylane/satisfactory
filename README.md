@@ -1,10 +1,5 @@
-<a href="https://codeclimate.com/github/jodylane/satisfactory/maintainability" target="_blank">
-  <img src="https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/maintainability" alt="Maintainability">
-</a>
-
-<a href="https://codeclimate.com/github/jodylane/satisfactory/test_coverage" target="_blank">
-  <img src="https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/test_coverage" alt="Test Coverage">
-</a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/maintainability)](https://codeclimate.com/github/jodylane/satisfactory/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/test_coverage)](https://codeclimate.com/github/jodylane/satisfactory/test_coverage)
 
 ## How to use
 
