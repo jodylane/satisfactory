@@ -1,3 +1,11 @@
+<a href="https://codeclimate.com/github/jodylane/satisfactory/maintainability" target="_blank">
+  <img src="https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/maintainability" alt="Maintainability">
+</a>
+
+<a href="https://codeclimate.com/github/jodylane/satisfactory/test_coverage" target="_blank">
+  <img src="https://api.codeclimate.com/v1/badges/feca5cee0f0eb4858165/test_coverage" alt="Test Coverage">
+</a>
+
 ## How to use
 
 switch to correct version of node
