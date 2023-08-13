@@ -1,5 +1,5 @@
 import Button from '../index';
-import theme from '../Button.theme';
+import themes from '../themes';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
@@ -16,11 +16,11 @@ export default {
       control: 'boolean',
     },
     theme: {
-      options: Object.keys(theme),
+      options: Object.keys(themes),
       control: { type: 'select' }, // Automatically inferred when 'options' is defined
       description: dynamicValueDescription(
         'Determines the visual output of the component.',
-        Object.keys(theme)
+        Object.keys(themes)
       ),
     },
   },
