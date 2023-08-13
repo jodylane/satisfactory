@@ -27,7 +27,7 @@ const Alert = ({ children, onClick, theme = 'primary', duration = 5, expire = tr
       {visible && (
         <StyledAlert onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {children} {visible}
-          <Icon name='Close' onClick={handleClick} />
+          <Icon name='Close' category='Interface' onClick={handleClick} />
           {countDownActive && <ProgressBar percent={percent} />}
         </StyledAlert>
       )}
