@@ -26,9 +26,33 @@ export const GlobalStyles = createGlobalStyle`
 
     @media (max-width: ${(props) => props.theme.deviceSize.sm}) { 
       font-size: 20px;
-    }
-    
+    } 
   }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.75em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  h5 {
+    font-size: 1.25em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
 
   // handles formatting of dynamic prop values to match storybook styles
   #storybook-docs {
