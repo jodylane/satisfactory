@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import Icon from './index';
-import Icons from './options';
-// import { dynamicValueDescription } from '@utils/storybookUtils';
+import Icon, { ICON_CATEGORY_NAMES, ICON_NAMES, IconOptions } from './index';
+import { dynamicValueDescription } from '@utils/storybookUtils';
 
 const Container = styled.div`
   display: flex;
@@ -18,6 +17,7 @@ const CategoryContainer = styled.div`
 
 const Category = styled.p`
   border-bottom: 1px solid black;
+  padding: 10px;
 `;
 
 const Grid = styled.div`
@@ -43,8 +43,22 @@ export default {
   title: 'Components/Icon',
   component: Icon,
   argTypes: {
+    category: {
+      options: ICON_CATEGORY_NAMES,
+      control: { type: 'select' },
+      description: dynamicValueDescription(
+        'The name of the category for the group of Icons you wish to use.',
+        ICON_CATEGORY_NAMES
+      ),
+    },
     name: {
-      control: 'text',
+      options: ICON_NAMES,
+      control: { type: 'select' },
+      description: dynamicValueDescription(
+        `The name of the Icon you wish to use that belongs to a category. This field is also the default
+        accessibility title for screen readers.`,
+        ICON_NAMES
+      ),
     },
     title: {
       control: 'text',
@@ -52,7 +66,7 @@ export default {
   },
 };
 
-const categories = Object.entries(Icons);
+const categories = Object.entries(IconOptions);
 
 const staticProps = {
   onClick: () => {
