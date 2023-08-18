@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import IconOptions from './options';
+import { Error } from './Icon.styled';
+import Popover from '@atoms/Popover';
+import usePopover from '@lib/hooks/usePopover';
 
 const ICON_CATEGORY_NAMES = Object.keys(IconOptions);
 const ICON_NAMES = Object.values(IconOptions)
@@ -19,12 +22,26 @@ const Icon = ({ className, onClick, title, category, name, size = '1.5em' }) => 
    * in storybook prop" might just say F%$k it & just bite the bullet </Rant>
    */
   if (!Component) {
-    console.error(
-      `Invalid Icon Name: ${name} for category: ${category}. Icons available under this category are: ${Object.keys(
-        IconOptions[category]
-      ).join(', ')}`
+    const message = `Invalid Icon Name: ${name} for category: ${category}. Icons available under this category are: ${Object.keys(
+      IconOptions[category]
+    ).join(', ')}`;
+
+    console.error(message);
+
+    const { visible, togglePopover, ref, target } = usePopover(true);
+
+    const handleClick = () => {
+      togglePopover(!visible);
+    };
+
+    return (
+      <>
+        <Error ref={ref} title='Error Icon' size='5em' onClick={handleClick} />
+        <Popover visible={visible} setVisible={handleClick} target={target} position='left'>
+          {message}
+        </Popover>
+      </>
     );
-    return 'Please provide a valid combination for category & name. See storybook all icons for icon mapping.';
   }
 
   return (

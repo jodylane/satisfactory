@@ -79,9 +79,10 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const StorybookContainer = styled.div`
-  min-width: 30vw;
-  max-width: 100vw;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100vw;
+  min-width: 30vw;
 `;
