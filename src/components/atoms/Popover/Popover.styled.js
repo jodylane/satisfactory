@@ -4,33 +4,31 @@ const SMALL = '1em';
 const LARGE = '1.5em';
 
 const themedStyles = (theme, position, target, self) => {
-  let styleRule = null;
-  if (target) {
-    console.log(target.getBoundingClientRect(), self.getBoundingClientRect());
-    const { height, width } = self.getBoundingClientRect();
-    const { top, left, bottom, right, height: targetHeight } = target.getBoundingClientRect();
+  if (target && self) {
+    const targetRect = target.getBoundingClientRect();
+    const popoverRect = self.getBoundingClientRect();
+    let top = 0;
+    let left = 0;
 
-    if (position === 'bottom') {
-      styleRule = css`
-        top: calc(-${top / 2}px - ${height}px - calc(1em));
-      `;
-    } else if (position === 'top') {
-      styleRule = css`
-        bottom: calc(-${top / 2}px);
-      `;
+    if (position === 'top') {
+      top = targetRect.bottom + 30;
+      left = targetRect.left + targetRect.width / 2 - popoverRect.width / 2;
     } else if (position === 'right') {
-      styleRule = css`
-        left: calc(-${left}px + calc(-1.5em - ${LARGE}));
-        top: calc(-${top / 2}px - ${(targetHeight / 4) * 3}px);
-      `;
+      top = targetRect.top + targetRect.height / 2 - popoverRect.height / 2;
+      left = targetRect.left - popoverRect.width - 30;
+    } else if (position === 'bottom') {
+      top = targetRect.top - popoverRect.height - 30;
+      left = targetRect.left + targetRect.width / 2 - popoverRect.width / 2;
+    } else if (position === 'left') {
+      top = targetRect.top + targetRect.height / 2 - popoverRect.height / 2;
+      left = targetRect.right + 30;
     }
-  }
 
-  return css`
-    ${styleRule}
-    background-color: ${theme.colors.white.value};
-    border: 1px solid ${theme.colors.black.value};
-  `;
+    return css`
+      top: ${top}px;
+      left: ${left}px;
+    `;
+  }
 };
 
 const determineFontSize = (size, small) => css`

@@ -37,7 +37,7 @@ const Icon = ({ className, onClick, title, category, name, size = '1.5em' }) => 
     return (
       <>
         <Error ref={ref} title='Error Icon' size='5em' onClick={handleClick} />
-        <Popover visible={visible} setVisible={handleClick} target={target} position='left'>
+        <Popover visible={visible} setVisible={handleClick} target={target} position='bottom'>
           {message}
         </Popover>
       </>
