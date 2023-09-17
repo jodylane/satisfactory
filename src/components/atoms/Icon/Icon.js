@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import IconOptions from './options';
-import { Error } from './Icon.styled';
-import Popover from '@atoms/Popover';
+import { useState } from 'react';
+import Tippy from '@tippyjs/react';
+
 import usePopover from '@lib/hooks/usePopover';
 
 const ICON_CATEGORY_NAMES = Object.keys(IconOptions);
@@ -9,44 +10,35 @@ const ICON_NAMES = Object.values(IconOptions)
   .map((iconGroup) => Object.keys(iconGroup))
   .flat();
 
-const Icon = ({ className, onClick, title, category, name, size = '1.5em' }) => {
-  const Component = IconOptions[category][name];
-  const accessibilityTitle = title ? title : `${name} Icon`;
-  // TODO: How the hell am I gonna display this error nicely.
-  /**
-   * <Rant> I want this to be a super friendly designer / developer component library
-   * Im thinking I need potentially set some sort of alert inbox hook to trigger some alert
-   * on the page to help navigate a designer to resolve this issue. otherwise Im stuck with this
-   * rendering some form of display output that might severely mess with where ever this icon
-   * is a child of. Not sure how much I should control that also really dont want to add a "is this
-   * in storybook prop" might just say F%$k it & just bite the bullet </Rant>
-   */
+const Icon = ({ className, title, category, name, size = '1.5em' }) => {
+  let Component = IconOptions[category][name];
+  let accessibilityTitle = title ? title : `${name} Icon`;
+
   if (!Component) {
     const message = `Invalid Icon Name: ${name} for category: ${category}. Icons available under this category are: ${Object.keys(
       IconOptions[category]
     ).join(', ')}`;
 
-    console.error(message);
+    console.warn(message);
 
-    const { visible, togglePopover, ref, target } = usePopover(true);
+    Component = IconOptions['Alert']['Error'];
+    accessibilityTitle = 'Error Icon';
 
-    const handleClick = () => {
-      togglePopover(!visible);
-    };
+    const { handleToggle, args } = usePopover(true);
 
     return (
-      <>
-        <Error ref={ref} title='Error Icon' size='5em' onClick={handleClick} />
-        <Popover visible={visible} setVisible={handleClick} target={target} position='bottom'>
-          {message}
-        </Popover>
-      </>
+      <Tippy {...args} content={message}>
+        <Component
+          className={className}
+          onClick={handleToggle}
+          title={accessibilityTitle}
+          size={size}
+        />
+      </Tippy>
     );
   }
 
-  return (
-    <Component className={className} onClick={onClick} title={accessibilityTitle} size={size} />
-  );
+  return <Component className={className} title={accessibilityTitle} size={size} />;
 };
 
 Icon.propTypes = {

@@ -1,7 +1,7 @@
 import themes from '@lib/theme.js';
 import { buildSwatches } from '@utils/themeUtils';
 
-import Swatch from './components/Swatch';
+import Swatch from '@atoms/Swatch';
 import { Container } from './ListSwatches.styled';
 
 const ListSwatches = () => {

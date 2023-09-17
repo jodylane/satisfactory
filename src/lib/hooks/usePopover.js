@@ -1,26 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 
-function usePopover(initialState) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(initialState);
-  const [target, setTarget] = useState(null);
+function usePopover(initiallyVisible) {
+  const [visible, setVisible] = useState(initiallyVisible);
 
-  useEffect(() => {
-    if (ref.current) {
-      setTarget(ref.current);
-    }
-  }, []);
-
-  const togglePopover = () => {
+  const handleToggle = () => {
     setVisible(!visible);
   };
 
-  return {
-    visible,
-    togglePopover,
-    ref,
-    target: target,
-  };
+  return { handleToggle, args: { theme: 'light-border', trigger: 'manual', visible } };
 }
 
 export default usePopover;

@@ -6,9 +6,11 @@
     "start": "next start",
     "storybook": "storybook dev -p 8080",
     "build-storybook": "storybook build",
-    "update:packages": "syncyarnlock -s -k"
+    "update:packages": "syncyarnlock -s -k",
+    "generate": "node src/utils/generate-component"
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "lodash": "^4.17.21",
     "next": "13.4.12",
     "polished": "^4.2.2",
@@ -18,8 +20,7 @@
     "storybook": "^7.3.2",
     "styled-components": "^5.3.11",
     "styled-icons": "^10.47.0",
-    "syncyarnlock": "^1.0.19",
-    "tippy.js": "^6.3.7"
+    "syncyarnlock": "^1.0.19"
   },
   "devDependencies": {
     "@storybook/addon-controls": "^7.3.2",
@@ -31,6 +32,11 @@
     "@storybook/blocks": "^7.3.2",
     "@storybook/react": "^7.3.2",
     "@storybook/react-webpack5": "^7.3.2",
-    "@storybook/testing-library": "^0.2.0"
+    "@storybook/testing-library": "^0.2.0",
+    "fs-extra": "^11.1.0",
+    "path": "^0.12.7",
+    "pluralize": "^8.0.0",
+    "replace-in-file": "^6.3.5",
+    "yargs": "^17.7.1"
   }
 }

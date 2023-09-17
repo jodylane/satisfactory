@@ -68,11 +68,7 @@ export default {
 
 const categories = Object.entries(IconOptions);
 
-const staticProps = {
-  onClick: () => {
-    alert('hey, nice click bro!');
-  },
-};
+const staticProps = {};
 
 const Template = (args) => <Icon {...args} />;
 

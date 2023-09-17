@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import 'tippy.js/dist/tippy.css'; // Import Tippy.js CSS
+import 'tippy.js/themes/light-border.css';
 
 export const GlobalStyles = createGlobalStyle`
   html,
