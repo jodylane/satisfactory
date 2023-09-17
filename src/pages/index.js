@@ -1,11 +1,7 @@
-import FindPercentage from '@screens/FindPercentage';
-import ListSwatches from '@molecules/ListSwatches';
+// import FindPercentage from '@screens/FindPercentage';
+// import ListSwatches from '@molecules/ListSwatches';
+import Alert from '@atoms/Alert';
 
 export default function Home() {
-  return (
-    <div>
-      <FindPercentage />
-      <ListSwatches />
-    </div>
-  );
+  return <Alert>yes</Alert>;
 }

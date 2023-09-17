@@ -6,30 +6,37 @@
     "start": "next start",
     "storybook": "storybook dev -p 8080",
     "build-storybook": "storybook build",
-    "update:packages": "syncyarnlock -s -k"
+    "update:packages": "syncyarnlock -s -k",
+    "generate": "node src/utils/generate-component"
   },
   "dependencies": {
-    "@storybook/addon-controls": "^7.2.1",
-    "@storybook/addon-docs": "^7.2.1",
+    "@tippyjs/react": "^4.2.6",
     "lodash": "^4.17.21",
     "next": "13.4.12",
     "polished": "^4.2.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook": "^7.3.2",
     "styled-components": "^5.3.11",
     "styled-icons": "^10.47.0",
     "syncyarnlock": "^1.0.19"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.2.1",
-    "@storybook/addon-interactions": "^7.2.1",
-    "@storybook/addon-links": "^7.2.1",
+    "@storybook/addon-controls": "^7.3.2",
+    "@storybook/addon-docs": "^7.3.2",
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-interactions": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
     "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.2.1",
-    "@storybook/react": "^7.2.1",
-    "@storybook/react-webpack5": "^7.2.1",
+    "@storybook/blocks": "^7.3.2",
+    "@storybook/react": "^7.3.2",
+    "@storybook/react-webpack5": "^7.3.2",
     "@storybook/testing-library": "^0.2.0",
-    "storybook": "^7.2.1"
+    "fs-extra": "^11.1.0",
+    "path": "^0.12.7",
+    "pluralize": "^8.0.0",
+    "replace-in-file": "^6.3.5",
+    "yargs": "^17.7.1"
   }
 }
