@@ -2,7 +2,6 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const pluralize = require('pluralize');
 const replace = require('replace-in-file');
 const yargs = require('yargs');
 
@@ -16,25 +15,25 @@ const renameFiles = (destDir, name) => {
   fs.rename(`${destDir}/Component.test.js`, `${destDir}/${name}.test.js`);
 };
 
-const replaceFileContent = (destDir, name, pluralType) => {
+const replaceFileContent = async (destDir, name, pluralType) => {
   const config = {
     files: [`${destDir}/*`],
     from: /Component/g,
     to: `${name}`,
   };
 
-  replace({
+  await replace({
     ...config,
   });
-  replace({
+  await replace({
     ...config,
     files: [`${destDir}/themes/*`],
   });
-  replace({
+  await replace({
     ...config,
     files: [`${destDir}/stories/*`],
   });
-  replace({
+  await replace({
     files: [`${destDir}/stories/*`],
     from: /Atom/g,
     to: `${capitalizeFirstLetter(pluralType)}`,
@@ -42,7 +41,7 @@ const replaceFileContent = (destDir, name, pluralType) => {
 };
 
 const copyDir = (type, name) => {
-  const pluralType = pluralize(type);
+  const pluralType = `${type}s`;
   const srcDir = path.join(__dirname, `.ComponentStarter`);
   const destDir = path.join(__dirname, `../../components/${pluralType}/${name}`);
 
