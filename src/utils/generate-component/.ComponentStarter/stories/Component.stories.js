@@ -1,10 +1,9 @@
-// import Component from '../index';
-// import theme from '../Component.theme';
-// import fixtures from '../fixtures';
+// import Component, { fixtures } from '../index';
+// import theme from '../themes';
 // import { dynamicValueDescription } from '@utils/storybookUtils';
 
 // export default {
-//   title: 'Components/NewComponent',
+//   title: 'Atom/Component/Theme1',
 //   component: Component,
 //   argTypes: {
 //     propName: {
@@ -12,7 +11,7 @@
 //     },
 //     theme: {
 //       options: Object.keys(theme),
-//       control: { type: 'select' }, // Automatically inferred when 'options' is defined
+//       control: { type: 'select' },
 //       description: dynamicValueDescription(
 //         'Determines the visual output of the component.',
 //         Object.keys(theme)
@@ -21,12 +20,14 @@
 //   },
 // };
 
+// const staticProps = {
+//   ...fixtures,
+//   theme: 'themeName',
+// };
+
 // const Template = (args) => {
-//   return <Alert {...args} />;
+//   return <Component {...args} />;
 // };
 
 // export const Default = Template.bind({});
-// Default.args = { ...fixtures };
-
-// export const WithoutTimeout = Template.bind({});
-// WithoutTimeout.args = { ...fixtures, expire: false };
+// Default.args = { ...staticProps };

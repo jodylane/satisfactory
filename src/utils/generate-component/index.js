@@ -6,21 +6,45 @@ const pluralize = require('pluralize');
 const replace = require('replace-in-file');
 const yargs = require('yargs');
 
+const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
 const copyDir = (type, name) => {
+  const pluralType = pluralize(type);
   const srcDir = path.join(__dirname, `.ComponentStarter`);
-  const destDir = path.join(__dirname, `../../../src/components/${pluralize(type)}/${name}`);
-  const replaceConfig = {
+  const destDir = path.join(__dirname, `../../components/${pluralType}/${name}`);
+
+  const config = {
     files: [`${destDir}/*`],
     from: /Component/g,
     to: `${name}`,
   };
 
-  fs.copySync(srcDir, destDir, { recursive: true });
-  fs.rename(`${destDir}/Component.js`, `${destDir}/${name}.js`);
-  fs.rename(`${destDir}/Component.styled.js`, `${destDir}/${name}.styled.js`);
-  fs.rename(`${destDir}/Component.stories.js`, `${destDir}/${name}.stories.js`);
-  fs.rename(`${destDir}/Component.test.js`, `${destDir}/${name}.test.js`);
-  replace(replaceConfig);
+  try {
+    fs.copySync(srcDir, destDir, { recursive: true });
+    fs.rename(`${destDir}/Component.js`, `${destDir}/${name}.js`);
+    fs.rename(`${destDir}/themes/Component.theme.js`, `${destDir}/themes/${name}.theme.js`);
+    fs.rename(`${destDir}/Component.styled.js`, `${destDir}/${name}.styled.js`);
+    fs.rename(`${destDir}/stories/Component.stories.js`, `${destDir}/stories/${name}.stories.js`);
+    fs.rename(`${destDir}/Component.test.js`, `${destDir}/${name}.test.js`);
+    replace({
+      ...config,
+    });
+    replace({
+      ...config,
+      files: [`${destDir}/themes/*`],
+    });
+    replace({
+      ...config,
+      files: [`${destDir}/stories/*`],
+    });
+    replace({
+      files: [`${destDir}/stories/*`],
+      from: /Atom/g,
+      to: `${capitalizeFirstLetter(pluralType)}`,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const argv = yargs
