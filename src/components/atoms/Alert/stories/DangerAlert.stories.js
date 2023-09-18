@@ -1,5 +1,5 @@
-import Alert from '../index';
-import theme from '../Alert.theme';
+import Alert, { fixtures } from '../index';
+import theme from '../themes';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
@@ -11,7 +11,7 @@ export default {
     },
     theme: {
       options: Object.keys(theme),
-      control: { type: 'select' }, // Automatically inferred when 'options' is defined
+      control: { type: 'select' },
       description: dynamicValueDescription(
         'Determines the visual output of the component.',
         Object.keys(theme)
@@ -20,15 +20,11 @@ export default {
   },
 };
 
-const staticProps = {
-  children:
-    'This is my super awesome & super legitimate alert for alerting folks with. Some people could be jealous of such fine alerts.',
-  theme: 'danger',
-};
-
 const Template = (args) => {
   return <Alert {...args} />;
 };
+
+const staticProps = { ...fixtures, theme: 'danger' };
 
 export const Default = Template.bind({});
 Default.args = { ...staticProps };

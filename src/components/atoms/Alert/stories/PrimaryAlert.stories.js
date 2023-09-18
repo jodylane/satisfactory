@@ -1,5 +1,5 @@
-import Alert from '../index';
-import theme from '../Alert.theme';
+import Alert, { fixtures } from '../index';
+import theme from '../themes';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
@@ -20,11 +20,7 @@ export default {
   },
 };
 
-const staticProps = {
-  children:
-    'This is my super awesome & super legitimate alert for alerting folks with. Some people could be jealous of such fine alerts.',
-  theme: 'primary',
-};
+const staticProps = { ...fixtures, theme: 'primary' };
 
 const Template = (args) => <Alert {...args} />;
 

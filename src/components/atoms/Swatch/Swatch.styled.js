@@ -1,14 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ColorSwatch = styled.div`
-  height: 150px;
-  width: 150px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
-  border: 1px solid ${(props) => props.color};
+  display: flex;
   font-size: 24px;
   font-weight: bold;
+  height: 150px;
+  justify-content: center;
+  width: 150px;
+
+  ${({ color, backgroundColor }) => css`
+    background-color: ${backgroundColor};
+    border: 1px solid ${color};
+    color: ${color};
+  `}
 `;

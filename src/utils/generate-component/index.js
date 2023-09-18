@@ -2,25 +2,56 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const pluralize = require('pluralize');
 const replace = require('replace-in-file');
 const yargs = require('yargs');
 
-const copyDir = (type, name) => {
-  const srcDir = path.join(__dirname, `.ComponentStarter`);
-  const destDir = path.join(__dirname, `../../../src/components/${pluralize(type)}/${name}`);
-  const replaceConfig = {
+const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
+const renameFiles = (destDir, name) => {
+  fs.rename(`${destDir}/Component.js`, `${destDir}/${name}.js`);
+  fs.rename(`${destDir}/themes/Component.theme.js`, `${destDir}/themes/${name}.theme.js`);
+  fs.rename(`${destDir}/Component.styled.js`, `${destDir}/${name}.styled.js`);
+  fs.rename(`${destDir}/stories/Component.stories.js`, `${destDir}/stories/${name}.stories.js`);
+  fs.rename(`${destDir}/Component.test.js`, `${destDir}/${name}.test.js`);
+};
+
+const replaceFileContent = async (destDir, name, pluralType) => {
+  const config = {
     files: [`${destDir}/*`],
     from: /Component/g,
     to: `${name}`,
   };
 
-  fs.copySync(srcDir, destDir, { recursive: true });
-  fs.rename(`${destDir}/Component.js`, `${destDir}/${name}.js`);
-  fs.rename(`${destDir}/Component.styled.js`, `${destDir}/${name}.styled.js`);
-  fs.rename(`${destDir}/Component.stories.js`, `${destDir}/${name}.stories.js`);
-  fs.rename(`${destDir}/Component.test.js`, `${destDir}/${name}.test.js`);
-  replace(replaceConfig);
+  await replace({
+    ...config,
+  });
+  await replace({
+    ...config,
+    files: [`${destDir}/themes/*`],
+  });
+  await replace({
+    ...config,
+    files: [`${destDir}/stories/*`],
+  });
+  await replace({
+    files: [`${destDir}/stories/*`],
+    from: /Atom/g,
+    to: `${capitalizeFirstLetter(pluralType)}`,
+  });
+};
+
+const copyDir = (type, name) => {
+  const pluralType = `${type}s`;
+  const srcDir = path.join(__dirname, `.ComponentStarter`);
+  const destDir = path.join(__dirname, `../../components/${pluralType}/${name}`);
+
+  try {
+    fs.copySync(srcDir, destDir, { recursive: true });
+    renameFiles(destDir, name);
+    replaceFileContent(destDir, name, pluralType);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const argv = yargs

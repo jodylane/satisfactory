@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Icon, { ICON_CATEGORY_NAMES, ICON_NAMES, IconOptions } from './index';
+import Icon, { ICON_CATEGORY_NAMES, ICON_NAMES, IconOptions, fixtures } from './index';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
 const Container = styled.div`
@@ -68,7 +68,7 @@ export default {
 
 const categories = Object.entries(IconOptions);
 
-const staticProps = {};
+const staticProps = { ...fixtures };
 
 const Template = (args) => <Icon {...args} />;
 
@@ -99,7 +99,6 @@ const AllIconTemplate = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.args = { ...staticProps, name: 'Close', category: 'Interface' };
+Default.args = { ...staticProps };
 
 export const AllIcons = AllIconTemplate.bind({});
-AllIcons.args = { ...staticProps };
