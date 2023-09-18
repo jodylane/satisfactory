@@ -1,5 +1,5 @@
 import Alert, { fixtures } from '../index';
-import theme from '../Alert.theme';
+import theme from '../themes';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
 export default {
