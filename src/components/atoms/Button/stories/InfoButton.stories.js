@@ -1,4 +1,4 @@
-import Button from '../index';
+import Button, { fixtures } from '../index';
 import themes from '../themes';
 import { dynamicValueDescription } from '@utils/storybookUtils';
 
@@ -27,15 +27,9 @@ export default {
 };
 
 const staticProps = {
-  onClick: () => {
-    alert('hey, nice click bro!');
-  },
-  children: 'My Button',
-  disabled: false,
-  outline: false,
+  ...fixtures,
   theme: 'info',
 };
-
 const Template = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
